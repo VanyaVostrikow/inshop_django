@@ -1,0 +1,31 @@
+{%extends 'base_generic.html'%}
+{%block content%}
+<div class="loginform">
+    <form actions="" method="post">{% csrf_token %}
+        <form>
+            
+            <div class="text-field">
+              <label class="text-field__label" for="username"></label>
+              <div class="text-field__icon-2 text-field__icon-2_email">
+                  {{ form.username }}
+              </div>
+            </div>
+            <div class="text-field">
+              <label class="text-field__label" for="password"></label>
+              <div class="text-field__icon-2 text-field__icon-2_search">
+                  {{ form.password }}<br>
+              </div>
+            </div>
+            
+           
+            <button class="button-login" type="submit" style="vertical-align:middle"><span>Login </span></button>
+          </form><div class="input-group input-group-sm mb-3">
+            
+            
+          </div>
+           
+    
+        
+    </form>
+  </div>     
+{%endblock%}

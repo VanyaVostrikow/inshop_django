@@ -1,0 +1,38 @@
+{%extends 'base_generic.html'%}
+{%block content%}
+<div class="Game">
+    
+    <div class="Game-answer">
+        <textarea id="Game-answer" readonly="True" style="margin: 10px; width: 90%; height: 90%; border-radius: 15px; background-color: rgba(5, 44, 20, 0.74); font-size: 11px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; text-decoration-color: blue;"></textarea>
+    
+    </div>
+    <div class="game-form"> 
+        
+        <div class="game-out">
+            <p>{{text}}</p> <br>
+        
+            {% if user.is_superuser == True %}
+            {{ans}}<br> 
+            {% endif %}
+            <textarea id="Ntry" style="border-radius: 40px; font-size: 30px; text-align: center; max-width: 60px; max-height: 54px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">5</textarea>
+        </div>
+
+        <div class="game-in">
+            <input class ="text-field__input" type="text" placeholder="Пиши сюда уебище", id="input_field">
+        </div>
+
+        <div class="game-button">
+            <button class="btn btn-success" type="submit" id="btn-ok">Тык</button>
+
+            {% csrf_token %}
+            <script var token = {%csrf_token%}></script>
+            {% load static %}
+            <script  src="{% static 'input.js' %}"></script>
+
+        </div>
+        
+        
+    </div>
+   
+</div>
+{%endblock%}

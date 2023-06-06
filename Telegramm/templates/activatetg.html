@@ -1,0 +1,37 @@
+{%extends 'base_generic.html'%}
+
+{%block content%}
+    {%if user.is_authenticated%}
+    <div class="tgblock">
+        <div class="tg-annotation">
+            <img src="/media/icons8-telegram-app-100.png" alt="">
+            <p>Hello {{user.username}} Here u can activate ur acount with Telegram bot CPUshopBOT!</p>
+            
+        </div>
+        <div class="tg-input">
+                <form action="" method="post">
+                    {% csrf_token %}
+                        {{form.as_p}}
+                        <button class="butntg" type="submit"> Авторизоваться </button>   
+                </form>    
+        </div>
+    </div>
+    {%else%}
+    <div class="tgblock">
+        <div class="tg-annotation">
+            <img src="/media/icons8-telegram-app-100.png" alt="">
+            <p>Ваш аккаунт активирован? Давайте попробуем авторизоваться через Телеграмм</p>
+            
+        </div>
+        <div class="tg-input">
+            <form action="" method="post">
+                {% csrf_token %}
+                    {{form.as_p}}
+                    <button class="butntg" type="submit"> Авторизоваться </button>
+            </form>    
+    </div>
+              
+    </div>
+    {%endif%}
+
+{%endblock%}

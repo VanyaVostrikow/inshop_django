@@ -1,0 +1,21 @@
+{% extends 'base_generic.html'%}
+
+{% block content %}
+<dir><main><h1>Input ur text-comment here:</h1></main></dir>
+<dir>
+
+   {% load static %}  
+
+    <form method="post">
+            {% csrf_token %}
+           
+            {{ form.title }}<br>
+            
+            <span>{{ error }}</span>
+        
+        <button class="btn btn-success" type="submit">ENTER</button>
+
+ 
+    </form>
+</dir>
+{% endblock %}

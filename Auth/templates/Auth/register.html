@@ -1,0 +1,27 @@
+{% extends 'base_generic.html'%}
+{%block content%}
+    <form actions="" method="post">{% csrf_token %}
+        
+        <div class="form-group">
+            <label for="inputEmail">login:</label>
+            {{form.username}} <br>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Пароль:</label>
+            {{form.password1}} <br>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Пароль:</label>
+            {{form.password2}} <br>
+          </div>
+        {% block JavaScript %}
+                $(document).ready(function () {
+          ( .... )
+        })
+        {% endblock JavaScript %}
+        
+       
+
+          <button class="button-login" type="submit" style="vertical-align:middle"><span>Register </span></button>
+    </form>
+{%endblock%}

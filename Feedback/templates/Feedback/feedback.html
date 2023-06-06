@@ -1,0 +1,31 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="feedback">
+    <h1>HA?</h1>
+    <p>Please send us your feedback.</p>
+</div>
+<div class="feedback-form">
+    <form method="post">
+
+        <div class="text-field">
+            <label class="text-field__label" for="email"></label>
+            <div class="text-field__icon-2 text-field__icon-2_email">
+                {{ form.email }}
+            </div>
+          </div>
+          <div class="text-field">
+            <label class="text-field__label" for="text"></label>
+            <div class="text-field__icon-2 text-field__icon-2_search">
+                {{ form.message }}<br>
+            </div>
+          </div>
+        {% csrf_token %}
+        
+
+        
+        <button class="button-FEEDBACK" type="submit" style="vertical-align:middle"><span>Feedback </span></button>
+        
+    </form>
+</div>
+{% endblock content %}

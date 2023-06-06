@@ -1,0 +1,49 @@
+{% extends 'base_generic.html'%}
+{%block content%}
+    <ul>
+            <main>     
+            <h1>{{Product.name}}</h1></li>
+            <div class="tag">
+                <p class="tags">Category | {{ Product.tags.all|join:", " }}</p>
+            </div>
+            {{Product.description}}</li><br>
+            <h1>{{Product.price}}</h1>
+                
+            <img src = "{{Product.logo.url}}" style="width:200px;height:200px;border-radius:30px;" >  
+            <form action="{% url 'Cart:add' pk=Product.id%}" method="post">
+                {{ cart_form }}
+                {{pk}}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary mb-2">Add to cart</button>
+            </form>
+        </main> 
+    </ul>
+    
+    {% if comments %}
+        {%for comment in comments%}
+        <div class="alert alert-dark">
+            <hr> 
+            <section> <h6>{{comment.PrUser}}</h3>
+            <div class="alert alert-warning">
+                <p>{{comment.title}}</p>
+            </div>
+            </section>
+        </div>      
+        {%endfor%}
+    {% else %}
+    <div class="alert alert-warning">
+        <p><b>NOTHING</b></p>        
+    </div>
+    {% endif %}
+    {%if user.is_authenticated%}
+        <a href="create_comment/"><button type="button" class="btn btn-lg btn-primary" disabled>Create comment</button>
+    {%else%}
+        <a href="/userauth/login/"><button type="button" class="btn btn-secondary btn-lg disabled" disabled>Login to Comment</button></a>
+    {%endif%}
+
+{%endblock%}
+
+
+
+
+  

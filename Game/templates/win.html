@@ -1,0 +1,23 @@
+{%extends 'base_generic.html'%}
+{%block content%}
+<div class="Game">
+        <div class="game-out">
+           !You Win!
+        
+
+        <div class="game-in">
+            <div class="coupon">
+                Your coupon is = {{text}}
+                
+                </div>
+        </div>
+    </div>
+        <div class="game-button">
+            <form action="{% url 'Coupon:create_game' %}" method="post">
+                <input type="submit" value="Apply"><br>
+                {% csrf_token %}
+            </form>
+        </div>
+    </form>
+</div>
+{%endblock%}

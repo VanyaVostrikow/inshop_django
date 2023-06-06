@@ -1,0 +1,14 @@
+{% extends 'base_generic.html' %}
+
+{%block content%}
+{%if user.is_authenticated%}
+<a href="logout">logout({{user.username}})</a>
+{%else%}
+    <div>
+        <form>
+    <a href="register"><button class="btn btn-primary btn-lg active" type="button">Register Now!</button></a>
+    <a href="login"><button class="btn btn-primary btn-lg active" type="button">Login now!</button></a>
+        </form>
+    </div>
+{%endif%}
+{%endblock%}

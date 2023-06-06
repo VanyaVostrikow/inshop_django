@@ -1,0 +1,48 @@
+{%extends 'base_generic.html'%}
+
+{%block content%}
+<div class="index-text">
+    <b>CPU-Shop</b> 
+    <table>
+    <td>
+        <img src = "url('../../../media/logo.jpg" style="width:80%;height:auto;border-radius:30px; border: 10px; flex: auto;"></li><br>
+    </td>        
+    <td>
+        <h2>Это просто маленький сайт</h2>
+        <h2>У нас очень много красивой техники, промокодов и есть чат ботик</h2>
+    </td>
+      
+    </table>
+</div>
+<div class="index-images-block">
+  
+    <img class="img_index" src = "/media/public.jpg" style="width:29%;height:auto;border-radius:30px; border: 10px; flex: auto; margin: 1%; float: left;"></li>
+    <img class="img_index" src = "/media/shop.jpg" style="width:29%;height:auto;border-radius:30px; border: 10px; flex: auto; margin-top: 1%; margin-bottom: 1%; margin-left: 5%;"></li>
+    <img class="img_index" src = "/media/tshirt.jpg" style="width:29%;height:auto;border-radius:30px; border: 10px; flex: auto; margin: 1%; float: right;"></li>
+</div>
+<div class="Index-News:">
+    
+        
+    <div class = 'Telegram-main'>  
+        {%if user.is_authenticated%}   
+        <div class="Telegram-window">
+                <img src = "url('../../../media/photo_2023-03-29_12-19-11.jpg" style="max-height: 600px;max-width:10%;border-radius:5px; border: 10px; flex: auto;"></li><br>
+        </div> 
+        {%else%}       
+        <div class="Telegram-window">
+                    <img src = "url('../../../media/photo_2023-03-29_12-19-22.jpg" style="height: auto; width: 20%;border-radius:5px; border: 10px; flex: auto;"></li><br>    
+        </div>            
+        {%endif%}
+            <b class="font-size:40px; float: right;">Привет всем выблядкам и блядям</b>
+    </div>
+    
+</div>    
+{%endblock%}
+
+
+{%block title%}
+
+    CPU-shOp
+
+{%endblock%}
+

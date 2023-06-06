@@ -1,0 +1,83 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %}
+    Your shopping cart
+{% endblock %}
+{% block content %}
+<br><h1>Your shopping cart</h1>
+    <table class="cart">
+        <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Remove</th>
+            <th>Unit price</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cart %}
+            {% with product=item.product %}
+                <tr>
+                    <td>
+                        <a href="{{ product.get_absolute_url }}">
+                            <img src="
+                                {% if product.logo %}
+                                    {{ product.logo.url }}
+                                {% else %}
+                                    {% static 'img/no_image.png' %}
+                                {% endif %}" style="width:50px;height:50px;">
+                        </a>
+                    </td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td><a href="{% url 'Cart:remove' product.id %}">Remove </a></td>
+                    <td class="num">${{ item.price }}</td>
+                    <td class="num">${{ item.total_price }}</td>
+                </tr><br>
+            {% endwith %}
+        {% endfor %}
+        {% if cart.coupon %}
+    <tr class="subtotal">
+        <td>Subtotal</td>
+        <td colspan="4"></td>
+        <td class="num">${{ cart.get_total_price }}</td>
+    </tr>
+    <tr>
+        <td>
+            "{{ cart.coupon.code }}" coupon
+            ({{ cart.coupon.discount }}% off)
+        </td>
+        <td colspan="4"></td>
+        <td class="num neg">
+            - ${{ cart.get_discount|floatformat:"2" }}
+        </td>
+    </tr>
+{% endif %}
+<tr class="total">
+    <td>Total</td>
+    <td colspan="4"></td>
+    <td class="num">
+        ${{ cart.get_total_price_after_discount|floatformat:"2" }}
+    </td>
+</tr>
+        </tbody>
+    </table>
+    <form action="{% url 'Coupon:apply' %}" method="post">
+        {{ coupon_apply_form }}
+        <input type="submit" value="Apply">
+        {% csrf_token %}
+    </form>
+    {%if user.is_authenticated%}
+    
+        <a href="{% url 'Main:Products' %}"><button class="btn btn-primary btn-lg active" type="button">Continue shopping</button></a>
+        <a href="{% url 'Orders:order_create' %}"><button class="btn btn-primary btn-lg active" type="button">Order now!</button></a>
+    {%else%}    
+        <h1>Are u logged?</h1>
+        <a href="{% url 'Auth:register'%}"><button class="btn btn-primary btn-lg active" type="button">Register Now!</button></a>
+        <a href="{%url 'Auth:login' %}"><button class="btn btn-primary btn-lg active" type="button">Login now!</button></a>
+        </a>
+    {%endif%}
+    </p>
+{% endblock %}

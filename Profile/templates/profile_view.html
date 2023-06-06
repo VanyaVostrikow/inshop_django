@@ -1,0 +1,16 @@
+{% extends 'base_generic.html' %}
+
+{%block content%}
+<div class = "Profile">
+        <div class="Profile-view">
+            {{user}}<br>
+            {{mail}}<br>
+        </div>
+
+            {{error}}<br>
+            {%if request.user.is_authenticated%}
+            {%else%}
+            <a href="/userauth/"><button class="btn btn-primary btn-lg active" type="button">Вход</button></a>
+            {%endif%}
+<div>
+{% endblock %}
